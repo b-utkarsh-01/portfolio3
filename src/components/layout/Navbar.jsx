@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-slate-700/40 bg-slate-950/70 backdrop-blur abolute">
+      <header className="fixed top-0 left-0 w-full z-50 border-b border-slate-700/40 bg-slate-950/70 backdrop-blur">        
         <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-12">
           <a href="#top" className="text-base font-bold tracking-wide text-white">
             Utkarsh
