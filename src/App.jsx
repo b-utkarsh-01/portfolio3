@@ -14,7 +14,7 @@ const App = () => {
         trackGlobalMouse
         mouseInteraction
       />
-      <SplashCursor/>
+      {/* <SplashCursor/> */}
       <div className="relative z-10">
       <TargetCursor
         spinDuration={2}
