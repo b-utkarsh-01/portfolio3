@@ -152,13 +152,15 @@ const TargetCursor = ({
 
     const enterHandler = e => {
       const directTarget = e.target;
-      if (directTarget.closest(NO_CURSOR_TARGET_SELECTOR)) return;
+      const explicitTarget = directTarget.closest('.cursor-target');
+      if (directTarget.closest(NO_CURSOR_TARGET_SELECTOR) && !explicitTarget) return;
       const allTargets = [];
       let current = directTarget;
       while (current && current !== document.body) {
+        const isExplicitCursorTarget = current.classList?.contains('cursor-target');
         if (
           current.matches(targetSelector) &&
-          !current.closest(NO_CURSOR_TARGET_SELECTOR)
+          (!current.closest(NO_CURSOR_TARGET_SELECTOR) || isExplicitCursorTarget)
         ) {
           allTargets.push(current);
         }

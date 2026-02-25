@@ -174,6 +174,7 @@ const GooeyNav = ({
           }
           .effect.text.active {
             color: black;
+            font-weight: 700;
           }
           .effect.filter {
             filter: none;
@@ -282,10 +283,11 @@ const GooeyNav = ({
             transform: scale(0);
             transition: all 0.3s ease;
             z-index: -1;
+            
           }
         `}
       </style>
-      <div className="relative" ref={containerRef}>
+      <div className="relative " ref={containerRef}>
         <nav className="flex relative" style={{ transform: 'translate3d(0,0,0.01px)' }}>
           <ul
             ref={navRef}
@@ -294,21 +296,23 @@ const GooeyNav = ({
             }`}
             style={{
               color: 'white',
-              textShadow: '0 1px 1px hsl(205deg 30% 10% / 0.2)'
+              textShadow: ' 1px 1px hsl(205deg 30% 10% / 0.2)'
             }}
           >
             {items.map((item, index) => (
               <li
                 key={index}
-                className={`rounded-full relative cursor-pointer transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] text-white ${
-                  activeIndex === index ? 'active' : ''
+                className={`cursor-target cursor-none rounded-full relative duration-300   ${
+                  activeIndex === index ? 'active ' : ''
                 }`}
               >
                 <a
                   onClick={e => handleClick(e, index, item)}
                   href={item.href}
                   onKeyDown={e => handleKeyDown(e, index, item)}
-                  className={`outline-none py-[0.6em] px-[1em] inline-block ${vertical ? 'w-full text-center' : ''}`}
+                  className={` py-[0.6em] px-[1em] inline-block ${
+                    activeIndex === index ? 'font-bold' : ''
+                  } ${vertical ? 'w-full text-center' : ''}`}
                 >
                   {item.label}
                 </a>

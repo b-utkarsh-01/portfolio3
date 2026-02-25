@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <>
       <header className="no-cursor-target fixed bottom-2 left-1/2 z-50 w-[calc(100vw-12px)] max-w-[980px] -translate-x-1/2 sm:bottom-6 sm:w-[min(96vw,980px)]">
-        <nav className="flex items-center justify-between gap-1 rounded-2xl border border-zinc-700/70 bg-zinc-900/90 p-1.5 backdrop-blur sm:gap-2 sm:p-2">
+        <nav className="flex items-center justify-between gap-1 rounded-2xl border border-zinc-700/70 bg-zinc-900/90 p-1.5 backdrop-blur sm:gap-2 sm:p-2 ">
           <BrandLink />
           <DesktopGooeyNav />
           <MobileMenuButton
