@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { fadeInUp } from "./aboutAnimations";
-import { sectionIcons } from "./aboutData";
+import { education, sectionIcons } from "./aboutData";
 import SectionHeader from "./SectionHeader";
 
 const EducationSection = () => (
@@ -11,14 +11,26 @@ const EducationSection = () => (
     variants={fadeInUp}
     className="no-cursor-target rounded-3xl border border-slate-700 bg-slate-900/60 p-5 sm:p-7"
   >
-    <SectionHeader icon={sectionIcons.education} title="Education" subtitle="Expected Graduation: June 2026" />
-    <div className="mt-4 rounded-2xl border border-slate-700 bg-slate-950/50 p-4">
-      <h3 className="text-base sm:text-lg text-slate-100 font-semibold">
-        Shri Vaishnav Vidhyapeeth Vishawvidhyalya, Indore
-      </h3>
-      <p className="text-slate-400 text-sm sm:text-base mt-1">
-        Bachelor of Technology, Computer Science & Engineering
-      </p>
+    <SectionHeader icon={sectionIcons.education} title="Education" />
+    <div className="mt-4 space-y-4">
+      {education.map((entry) => (
+        <div key={entry.subtitle} className="space-y-3">
+          <p className="text-sm font-medium text-orange-300">{entry.subtitle}</p>
+          {entry.items.map((item) => (
+            <div
+              key={`${entry.subtitle}-${item.institute}-${item.degree}`}
+              className="rounded-2xl border border-slate-700 bg-slate-950/50 p-4"
+            >
+              <h3 className="text-base sm:text-lg text-slate-100 font-semibold">
+                {item.institute}
+              </h3>
+              <p className="text-slate-400 text-sm sm:text-base mt-1">
+                {item.degree}
+              </p>
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
   </motion.section>
 );

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-
+import ShinyText from "../ShinyText";
+import {badgeName} from "../about/aboutData"
 const navItems = [
   { label: "Home", href: "#hero" },
   { label: "Education", href: "#education" },
@@ -31,8 +32,19 @@ const Navbar = () => {
         {/* FIXED NAVBAR */}
         <header className=" no-cursor-target fixed top-0 left-0 w-full z-50 border-b border-slate-700/40 bg-slate-950/70 backdrop-blur">
           <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-12">
-            <a href="#top" className="cursor-none text-base font-bold tracking-wide text-white">
-              Utkarsh
+            <a href="#top" className="cursor-none text-2xl text-base font-bold tracking-wide text-white">
+              <ShinyText
+                text={badgeName.name}
+                speed={2}
+                delay={0}
+                color="#b5b5b5"
+                shineColor="#ffffff"
+                spread={120}
+                direction="left"
+                yoyo={false}
+                pauseOnHover={false}
+                disabled={false}
+              />
             </a>
 
             <div className="hidden items-center gap-2 md:flex">

@@ -60,6 +60,12 @@ export const profile = {
   ],
 };
 
+export const badgeName = {
+  name: "Utkarsh",
+  logo: "UT",
+  badgeTitle: "Full Stack Builder"
+}
+
 export const sectionIcons = {
   education: GraduationCap,
   experience: Briefcase,
@@ -123,6 +129,18 @@ export const skills = {
   api: ["REST APIs", "CRUD Operations", "JSON"],
   cloud: ["Firebase", "MongoDB Atlas", "AWS", "Docker", "Git"],
 };
+
+export const education = [
+  {
+    subtitle: "Expected Graduation: June 2026",
+    items: [
+      {
+        institute: "Shri Vaishnav Vidhyapeeth Vishawvidhyalya, Indore",
+        degree: "Bachelor of Technology, Computer Science & Engineering",
+      },
+    ]
+  },
+];
 
 export const experiences = [
   {

@@ -21,7 +21,7 @@ const HeroClock = ({ className = "" }) => {
       <p className="text-[10px] uppercase tracking-[0.2em] text-emerald-300/80">
         Current Time
       </p>
-      <p className="font-mono text-xs font-semibold text-emerald-300 sm:text-sm">
+      <p className="font-mono uppercase text-xs font-semibold text-emerald-300 sm:text-sm">
         {now.toLocaleTimeString([], {
           hour: "2-digit",
           minute: "2-digit",

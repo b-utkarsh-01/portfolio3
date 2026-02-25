@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion';
+import { badgeName } from '../aboutData';
 
 const HeroBadge = () => {
   return (
-    <div className="w-full flex flex-col items-center lg:items-end">
+    <div className="mx-auto flex w-[190px] flex-col items-center">
       <motion.div
         initial={{ scale: 0, rotate: -180 }}
         animate={{ scale: 1, rotate: 0 }}
@@ -17,7 +18,7 @@ const HeroBadge = () => {
       >
         {/* Gradient outer circle */}
         <div
-          className="absolute inset-0 rounded-full"
+          className="absolute inset-0 rounded-full "
           style={{
             background: 'linear-gradient(135deg, #22d3ee 0%, #f472b6 40%, #fb923c 70%, #facc15 100%)',
             boxShadow: '0 0 30px rgba(244, 114, 182, 0.4), 0 0 60px rgba(251, 146, 60, 0.2)',
@@ -44,7 +45,7 @@ const HeroBadge = () => {
               textShadow: '0 4px 20px rgba(0,0,0,0.5)',
             }}
           >
-            UT
+            {badgeName.logo}
           </motion.span>
         </div>
 
@@ -72,10 +73,10 @@ const HeroBadge = () => {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.7, duration: 0.4 }}
-        className="mt-5 text-sm sm:text-base lg:text-lg font-semibold tracking-wide text-slate-300"
+        className="mt-5 w-fit text-center text-sm font-semibold tracking-wide text-slate-300 sm:text-base lg:text-lg"
       >
-        <span className="relative">
-          Full Stack Builder
+        <span className="relative inline-block">
+          {badgeName.badgeTitle?.trim()}
           <motion.span
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
