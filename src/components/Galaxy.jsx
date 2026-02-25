@@ -187,6 +187,7 @@ export default function Galaxy({
   autoCenterRepulsion = 0,
   transparent = true,
   trackGlobalMouse = false,
+  onReady,
   ...rest
 }) {
   const ctnDom = useRef(null);
@@ -194,9 +195,11 @@ export default function Galaxy({
   const smoothMousePos = useRef({ x: 0.5, y: 0.5 });
   const targetMouseActive = useRef(0.0);
   const smoothMouseActive = useRef(0.0);
+  const hasReportedReady = useRef(false);
 
   useEffect(() => {
     if (!ctnDom.current) return;
+    hasReportedReady.current = false;
     const ctn = ctnDom.current;
     const renderer = new Renderer({
       alpha: transparent,
@@ -275,6 +278,10 @@ export default function Galaxy({
       program.uniforms.uMouseActiveFactor.value = smoothMouseActive.current;
 
       renderer.render({ scene: mesh });
+      if (!hasReportedReady.current) {
+        hasReportedReady.current = true;
+        onReady?.();
+      }
     }
     animateId = requestAnimationFrame(update);
     ctn.appendChild(gl.canvas);
@@ -333,7 +340,8 @@ export default function Galaxy({
     repulsionStrength,
     autoCenterRepulsion,
     transparent,
-    trackGlobalMouse
+    trackGlobalMouse,
+    onReady
   ]);
 
   return <div ref={ctnDom} className="w-full h-full relative" {...rest} />;

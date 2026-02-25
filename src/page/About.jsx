@@ -5,12 +5,12 @@ import ExperienceSection from "../components/about/ExperienceSection";
 import ProjectsSection from "../components/about/ProjectsSection";
 import CertificationsSection from "../components/about/CertificationsSection";
 
-const About = () => {
+const About = ({ appReady }) => {
   return (
     <div id="top" className="space-y-8 pb-12 max-w-6xl mx-auto">
       <section id="hero" 
        className="scroll-mt-24 no-cursor-target">
-        <HeroSection />
+        <HeroSection appReady={appReady} />
       </section>
       <section id="education" className="scroll-mt-24 no-cursor-target">
         <EducationSection />

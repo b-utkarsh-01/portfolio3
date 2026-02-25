@@ -6,11 +6,12 @@ import HeroContent from "./hero/HeroContent";
 import HeroBadge from "./hero/HeroBadge";
 import HeroClock from "./hero/HeroClock";
 
-const HeroSection = () => {
+const HeroSection = ({ appReady = true }) => {
   const heroRef = useRef(null);
   const shortSummary = profile.summary.split(".")[0] + ".";
 
   useEffect(() => {
+    if (!appReady) return;
     const ctx = gsap.context(() => {
       gsap.to(".ut-logo-container", {
         y: -6,
@@ -29,7 +30,7 @@ const HeroSection = () => {
       });
     }, heroRef);
     return () => ctx.revert();
-  }, []);
+  }, [appReady]);
 
   return (
 
@@ -39,11 +40,11 @@ const HeroSection = () => {
     >
       <HeroBackground />
       <div className="relative max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-12 ">
-        <HeroContent profile={profile} shortSummary={shortSummary}/>
+        <HeroContent key={`hero-content-${appReady ? "ready" : "loading"}`} profile={profile} shortSummary={shortSummary}/>
 
         <div className="flex-shrink-0 flex flex-col items-center gap-3 lg:items-end">
           <HeroClock className="hidden lg:block mr-5" />
-          <HeroBadge />
+          <HeroBadge key={`hero-badge-${appReady ? "ready" : "loading"}`} />
         </div>
       </div>
     </section>
