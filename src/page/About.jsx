@@ -7,7 +7,7 @@ import CertificationsSection from "../components/about/CertificationsSection";
 
 const About = ({ appReady }) => {
   return (
-    <div id="top" className="space-y-8 pb-12 max-w-6xl mx-auto">
+    <div id="top" className="mx-auto max-w-6xl space-y-8 pb-32 sm:pb-36">
       <section id="hero" 
        className="scroll-mt-24 no-cursor-target">
         <HeroSection appReady={appReady} />

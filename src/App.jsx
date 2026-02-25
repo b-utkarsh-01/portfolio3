@@ -105,7 +105,7 @@ const App = () => {
   }, [showPreloader]);
 
   return (
-    <div className="App relative min-h-screen w-full overflow-hidden text-white">
+    <div className="App relative min-h-screen w-full overflow-x-hidden text-white">
       {enableGalaxy ? (
         <Galaxy
           className="pointer-events-none absolute inset-0 z-0"
