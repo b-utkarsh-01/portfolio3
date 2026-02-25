@@ -29,9 +29,9 @@ const Navbar = () => {
       <div className="h-[60px]">
 
         {/* FIXED NAVBAR */}
-        <header className="fixed top-0 left-0 w-full z-50 border-b border-slate-700/40 bg-slate-950/70 backdrop-blur">
+        <header className=" no-cursor-target fixed top-0 left-0 w-full z-50 border-b border-slate-700/40 bg-slate-950/70 backdrop-blur">
           <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-12">
-            <a href="#top" className="text-base font-bold tracking-wide text-white">
+            <a href="#top" className="cursor-none text-base font-bold tracking-wide text-white">
               Utkarsh
             </a>
 
@@ -40,7 +40,7 @@ const Navbar = () => {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="rounded-full px-4 py-2 text-sm font-semibold text-slate-200 transition-colors hover:bg-slate-800/70"
+                  className="cursor-none rounded-full px-4 py-2 text-sm font-semibold text-slate-200 transition-colors hover:bg-slate-800/70"
                 >
                   {item.label}
                 </a>
@@ -64,7 +64,7 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen ? (
           <motion.div
-            className="fixed inset-0 z-[60] md:hidden"
+            className="no-cursor-target fixed inset-0 z-[60] md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

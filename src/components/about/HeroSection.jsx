@@ -32,13 +32,14 @@ const HeroSection = () => {
   }, []);
 
   return (
+
     <section
       ref={heroRef}
-      className="relative w-full overflow-hidden rounded-3xl bg-[#040b1d] py-10 px-4 sm:px-6"
+      className="relative no-cursor-target w-full overflow-hidden rounded-3xl bg-[#040b1d] py-10 px-4 sm:px-6"
     >
       <HeroBackground />
-      <div className="relative max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-12">
-        <HeroContent profile={profile} shortSummary={shortSummary} />
+      <div className="relative max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-12 ">
+        <HeroContent profile={profile} shortSummary={shortSummary}/>
 
         <div className="flex-shrink-0 flex flex-col items-center gap-3 lg:items-end">
           <HeroClock className="hidden lg:block mr-5" />

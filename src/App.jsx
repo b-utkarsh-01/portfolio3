@@ -17,18 +17,21 @@ const App = () => {
       {/* <SplashCursor/> */}
       <div className="relative z-10">
       <TargetCursor
+        targetSelector=".cursor-target, .rounded-2xl, .rounded-3xl, a, button"
         spinDuration={2}
         hideDefaultCursor
         parallaxOn
         hoverDuration={0.2}
       />
-      <Navbar />
+       
+      <Navbar/>
       <main className="py-4 px-4 sm:px-6 lg:px-12 xl:px-20">
         <Routes>
           <Route path="/" element={<About />} />
           <Route path="/about" element={<Navigate to="/" replace />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+        
       </main>
       </div>
     </div>

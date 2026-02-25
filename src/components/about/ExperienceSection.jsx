@@ -10,7 +10,7 @@ const ExperienceSection = () => (
     whileInView="visible"
     viewport={{ once: true, margin: "-80px" }}
     variants={staggerContainer}
-    className="space-y-5"
+    className="no-cursor-target space-y-5"
   >
     <SectionHeader icon={Briefcase} title="Experience" />
     <div className="rounded-3xl border border-slate-700 bg-slate-900/60 p-5 sm:p-6">

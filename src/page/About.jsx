@@ -8,16 +8,17 @@ import CertificationsSection from "../components/about/CertificationsSection";
 const About = () => {
   return (
     <div id="top" className="space-y-8 pb-12 max-w-6xl mx-auto">
-      <section id="hero" className="scroll-mt-24">
+      <section id="hero" 
+       className="scroll-mt-24 no-cursor-target">
         <HeroSection />
       </section>
-      <section id="education" className="scroll-mt-24">
+      <section id="education" className="scroll-mt-24 no-cursor-target">
         <EducationSection />
       </section>
       <section id="skills" className="scroll-mt-24">
         <SkillsSection />
       </section>
-      <section id="experience" className="scroll-mt-24">
+      <section id="experience" className="scroll-mt-24 no-cursor-target">
         <ExperienceSection />
       </section>
       <section id="projects" className="scroll-mt-24">

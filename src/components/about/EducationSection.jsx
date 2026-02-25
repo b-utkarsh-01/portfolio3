@@ -9,7 +9,7 @@ const EducationSection = () => (
     whileInView="visible"
     viewport={{ once: true, margin: "-80px" }}
     variants={fadeInUp}
-    className="rounded-3xl border border-slate-700 bg-slate-900/60 p-5 sm:p-7"
+    className="no-cursor-target rounded-3xl border border-slate-700 bg-slate-900/60 p-5 sm:p-7"
   >
     <SectionHeader icon={GraduationCap} title="Education" subtitle="Expected Graduation: June 2026" />
     <div className="mt-4 rounded-2xl border border-slate-700 bg-slate-950/50 p-4">

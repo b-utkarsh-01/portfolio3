@@ -1,6 +1,8 @@
 import { useEffect, useRef, useCallback, useMemo } from 'react';
 import { gsap } from 'gsap';
 
+const NO_CURSOR_TARGET_SELECTOR = '.no-cursor-target';
+
 const TargetCursor = ({
   targetSelector = '.cursor-target',
   spinDuration = 2,
@@ -150,10 +152,14 @@ const TargetCursor = ({
 
     const enterHandler = e => {
       const directTarget = e.target;
+      if (directTarget.closest(NO_CURSOR_TARGET_SELECTOR)) return;
       const allTargets = [];
       let current = directTarget;
       while (current && current !== document.body) {
-        if (current.matches(targetSelector)) {
+        if (
+          current.matches(targetSelector) &&
+          !current.closest(NO_CURSOR_TARGET_SELECTOR)
+        ) {
           allTargets.push(current);
         }
         current = current.parentElement;
