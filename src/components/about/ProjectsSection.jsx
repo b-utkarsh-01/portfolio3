@@ -1,18 +1,20 @@
 import { motion } from "framer-motion";
-import { Code, ExternalLink } from "lucide-react";
 import { fadeInUp, staggerContainer } from "./aboutAnimations";
-import { projects } from "./aboutData";
+import { projects, projectIcons, sectionIcons } from "./aboutData";
 import SectionHeader from "./SectionHeader";
 
-const ProjectsSection = () => (
-  <motion.section
+const ProjectsSection = () => {
+  const ExternalLinkIcon = projectIcons.externalLink;
+
+  return (
+    <motion.section
     initial="hidden"
     whileInView="visible"
     viewport={{ once: true, margin: "-80px" }}
     variants={staggerContainer}
     className="space-y-5"
   >
-    <SectionHeader icon={Code} title="Projects" subtitle="Selected work" />
+    <SectionHeader icon={sectionIcons.projects} title="Projects" subtitle="Selected work" />
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {projects.map((project) => (
         <motion.article
@@ -29,7 +31,7 @@ const ProjectsSection = () => (
               rel="noopener noreferrer"
               className="text-orange-400 hover:text-orange-300 transition-colors"
             >
-              <ExternalLink className="w-4 h-4" />
+              <ExternalLinkIcon className="w-4 h-4" />
             </a>
           </div>
           <p className="text-orange-300 text-sm mt-1">{project.tech}</p>
@@ -38,6 +40,7 @@ const ProjectsSection = () => (
       ))}
     </div>
   </motion.section>
-);
+  );
+};
 
 export default ProjectsSection;

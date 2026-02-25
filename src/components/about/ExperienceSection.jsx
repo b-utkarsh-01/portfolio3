@@ -1,18 +1,20 @@
 import { motion } from "framer-motion";
-import { Calendar, Briefcase } from "lucide-react";
 import { fadeInUp, staggerContainer } from "./aboutAnimations";
-import { experiences } from "./aboutData";
+import { experiences, experienceIcons, sectionIcons } from "./aboutData";
 import SectionHeader from "./SectionHeader";
 
-const ExperienceSection = () => (
-  <motion.section
+const ExperienceSection = () => {
+  const CalendarIcon = experienceIcons.calendar;
+
+  return (
+    <motion.section
     initial="hidden"
     whileInView="visible"
     viewport={{ once: true, margin: "-80px" }}
     variants={staggerContainer}
     className="no-cursor-target space-y-5"
   >
-    <SectionHeader icon={Briefcase} title="Experience" />
+    <SectionHeader icon={sectionIcons.experience} title="Experience" />
     <div className="rounded-3xl border border-slate-700 bg-slate-900/60 p-5 sm:p-6">
       {experiences.map((item) => (
         <motion.div
@@ -24,7 +26,7 @@ const ExperienceSection = () => (
           <h3 className="text-base sm:text-lg font-semibold text-slate-100">{item.title}</h3>
           <p className="text-orange-300 text-sm">{item.company}</p>
           <p className="text-slate-400 text-xs sm:text-sm flex items-center gap-2 mt-1">
-            <Calendar className="w-4 h-4" />
+            <CalendarIcon className="w-4 h-4" />
             {item.period}
           </p>
           <p className="text-slate-300 text-sm mt-2 leading-relaxed">{item.description}</p>
@@ -32,6 +34,7 @@ const ExperienceSection = () => (
       ))}
     </div>
   </motion.section>
-);
+  );
+};
 
 export default ExperienceSection;

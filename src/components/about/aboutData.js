@@ -1,3 +1,34 @@
+import {
+  Award,
+  GraduationCap,
+  Calendar,
+  Briefcase,
+  Code,
+  ExternalLink,
+  Terminal,
+  Database,
+  Cloud,
+  Code2,
+  Braces,
+  Coffee,
+  FileCode,
+  Cpu,
+  Atom,
+  Globe,
+  Palette,
+  Wind,
+  Server,
+  Network,
+  Wrench,
+  FileJson,
+  Flame,
+  Box,
+  GitBranch,
+  Phone,
+  Mail,
+  Github,
+} from "lucide-react";
+
 export const profile = {
   name: "Utkarsh Pathak",
   title: [
@@ -9,6 +40,79 @@ export const profile = {
   summary:
     "Backend-focused Computer Science undergraduate with hands-on experience in Node.js, Express.js, REST APIs, MongoDB, and Firebase. Strong foundation in C and JavaScript with experience building full-stack and AI-powered projects.",
   highlights: ["Node.js", "Express.js", "MongoDB", "REST APIs", "React.js"],
+  contacts: [
+    {
+      type: "phone",
+      text: "+91 8959348283",
+      href: "tel:+918959348283",
+    },
+    {
+      type: "email",
+      text: "butkarsh32@gmail.com",
+      href: "mailto:butkarsh32@gmail.com",
+    },
+    {
+      type: "github",
+      text: "github.com/b-utkarsh-01",
+      href: "https://github.com/b-utkarsh-01",
+      external: true,
+    },
+  ],
+};
+
+export const sectionIcons = {
+  education: GraduationCap,
+  experience: Briefcase,
+  projects: Code,
+  certifications: Award,
+  skills: Terminal,
+};
+
+export const experienceIcons = {
+  calendar: Calendar,
+};
+
+export const projectIcons = {
+  externalLink: ExternalLink,
+};
+
+export const contactIcons = {
+  phone: Phone,
+  email: Mail,
+  github: Github,
+};
+
+export const skillGroupIcons = {
+  programming: Code,
+  frontend: Terminal,
+  backend: Database,
+  databases: Database,
+  api: Cloud,
+  cloudTools: Cloud,
+};
+
+export const skillIcons = {
+  C: Code2,
+  "C++": Braces,
+  Java: Coffee,
+  JavaScript: FileCode,
+  Python: Cpu,
+  "React.js": Atom,
+  HTML: Globe,
+  CSS: Palette,
+  "Tailwind CSS": Wind,
+  "Node.js": Server,
+  "Express.js": Server,
+  MongoDB: Database,
+  MySQL: Database,
+  "REST APIs": Network,
+  "CRUD Operations": Wrench,
+  JSON: FileJson,
+  Firebase: Flame,
+  "MongoDB Atlas": Cloud,
+  AWS: Cloud,
+  Docker: Box,
+  Git: GitBranch,
 };
 
 export const skills = {

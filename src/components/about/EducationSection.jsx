@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { GraduationCap } from "lucide-react";
 import { fadeInUp } from "./aboutAnimations";
+import { sectionIcons } from "./aboutData";
 import SectionHeader from "./SectionHeader";
 
 const EducationSection = () => (
@@ -11,7 +11,7 @@ const EducationSection = () => (
     variants={fadeInUp}
     className="no-cursor-target rounded-3xl border border-slate-700 bg-slate-900/60 p-5 sm:p-7"
   >
-    <SectionHeader icon={GraduationCap} title="Education" subtitle="Expected Graduation: June 2026" />
+    <SectionHeader icon={sectionIcons.education} title="Education" subtitle="Expected Graduation: June 2026" />
     <div className="mt-4 rounded-2xl border border-slate-700 bg-slate-950/50 p-4">
       <h3 className="text-base sm:text-lg text-slate-100 font-semibold">
         Shri Vaishnav Vidhyapeeth Vishawvidhyalya, Indore

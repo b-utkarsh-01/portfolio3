@@ -3,6 +3,7 @@ import TextType from '../../../components/TextType';
 import DecryptedText from '../../../components/DecryptedText';
 import HeroClock from "./HeroClock";
 import ProfileName from "./ProfileName";
+import { contactIcons } from "../aboutData";
 
 const HeroContent = ({ profile, shortSummary }) => {
   return (
@@ -39,6 +40,26 @@ const HeroContent = ({ profile, shortSummary }) => {
           <Pill key={highlight} text={highlight} />
         ))}
       </div>
+
+      <div className="hero-text-animate flex flex-wrap items-center gap-2 ">
+        {profile.contacts?.map((contact) => {
+          const Icon = contactIcons[contact.type];
+          return (
+            <a
+              key={contact.href}
+              href={contact.href}
+              className="inline-flex cursor-none"
+              target={contact.external ? "_blank" : undefined}
+              rel={contact.external ? "noreferrer" : undefined}
+              aria-label={contact.text}
+              title={contact.text}
+            >
+              <Pill icon={Icon} iconOnly />
+            </a>
+          );
+        })}
+      </div>
+
     </div>
   );
 };

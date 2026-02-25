@@ -1,60 +1,14 @@
 import { motion } from "framer-motion";
-import {
-  Code,
-  Database,
-  Cloud,
-  Terminal,
-  Code2,
-  Braces,
-  Coffee,
-  FileCode,
-  Cpu,
-  Atom,
-  Globe,
-  Palette,
-  Wind,
-  Server,
-  Network,
-  Wrench,
-  FileJson,
-  Flame,
-  Box,
-  GitBranch,
-} from "lucide-react";
 import { fadeInUp, staggerContainer } from "./aboutAnimations";
-import { skills } from "./aboutData";
+import { skills, sectionIcons, skillGroupIcons, skillIcons } from "./aboutData";
 import SectionHeader from "./SectionHeader";
 import Pill from "./Pill";
-
-const skillIcons = {
-  C: Code2,
-  "C++": Braces,
-  Java: Coffee,
-  JavaScript: FileCode,
-  Python: Cpu,
-  "React.js": Atom,
-  HTML: Globe,
-  CSS: Palette,
-  "Tailwind CSS": Wind,
-  "Node.js": Server,
-  "Express.js": Server,
-  MongoDB: Database,
-  MySQL: Database,
-  "REST APIs": Network,
-  "CRUD Operations": Wrench,
-  JSON: FileJson,
-  Firebase: Flame,
-  "MongoDB Atlas": Cloud,
-  AWS: Cloud,
-  Docker: Box,
-  Git: GitBranch,
-};
 
 const SkillsSection = () => {
   const groups = [
     {
       title: "Programming",
-      icon: Code,
+      icon: skillGroupIcons.programming,
       list: skills.programming,
       textClassName: "text-cyan-200 group-hover:text-cyan-100",
       iconClassName: "text-cyan-400 group-hover:text-cyan-300",
@@ -62,7 +16,7 @@ const SkillsSection = () => {
     },
     {
       title: "Frontend",
-      icon: Terminal,
+      icon: skillGroupIcons.frontend,
       list: skills.frontend,
       textClassName: "text-fuchsia-200 group-hover:text-fuchsia-100",
       iconClassName: "text-fuchsia-400 group-hover:text-fuchsia-300",
@@ -70,7 +24,7 @@ const SkillsSection = () => {
     },
     {
       title: "Backend",
-      icon: Database,
+      icon: skillGroupIcons.backend,
       list: skills.backend,
       textClassName: "text-emerald-200 group-hover:text-emerald-100",
       iconClassName: "text-emerald-400 group-hover:text-emerald-300",
@@ -78,7 +32,7 @@ const SkillsSection = () => {
     },
     {
       title: "Databases",
-      icon: Database,
+      icon: skillGroupIcons.databases,
       list: skills.databases,
       textClassName: "text-indigo-200 group-hover:text-indigo-100",
       iconClassName: "text-indigo-400 group-hover:text-indigo-300",
@@ -86,7 +40,7 @@ const SkillsSection = () => {
     },
     {
       title: "API",
-      icon: Cloud,
+      icon: skillGroupIcons.api,
       list: skills.api,
       textClassName: "text-amber-200 group-hover:text-amber-100",
       iconClassName: "text-amber-400 group-hover:text-amber-300",
@@ -94,7 +48,7 @@ const SkillsSection = () => {
     },
     {
       title: "Cloud & Tools",
-      icon: Cloud,
+      icon: skillGroupIcons.cloudTools,
       list: skills.cloud,
       textClassName: "text-orange-200 group-hover:text-orange-100",
       iconClassName: "text-orange-400 group-hover:text-orange-300",
@@ -110,7 +64,7 @@ const SkillsSection = () => {
       variants={staggerContainer}
       className="space-y-5"
     >
-      <SectionHeader icon={Terminal} title="Skills" subtitle="Core stack and tooling" />
+      <SectionHeader icon={sectionIcons.skills} title="Skills" subtitle="Core stack and tooling" />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {groups.map(
           ({ title, icon: Icon, list, textClassName, iconClassName, hoverClassName }) => (
