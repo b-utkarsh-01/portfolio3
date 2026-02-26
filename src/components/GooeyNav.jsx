@@ -11,12 +11,15 @@ const GooeyNav = ({
   initialActiveIndex = 0,
   navigationDelayMs = 0,
   onNavigate,
-  vertical = false
+  vertical = false,
+  syncWithScroll = false,
+  scrollSpyOffset = 120
 }) => {
   const containerRef = useRef(null);
   const navRef = useRef(null);
   const filterRef = useRef(null);
   const textRef = useRef(null);
+  const scrollSyncLockUntilRef = useRef(0);
   const [activeIndex, setActiveIndex] = useState(initialActiveIndex);
 
   const noise = (n = 1) => n / 2 - Math.random() * n;
@@ -98,9 +101,13 @@ const GooeyNav = ({
     window.location.href = href;
   };
   const handleClick = (e, index, item) => {
-    const liEl = e.currentTarget;
-    if (activeIndex === index) return;
-    setActiveIndex(index);
+    const liEl = e.currentTarget.closest('li') || e.currentTarget;
+    if (activeIndex !== index) {
+      setActiveIndex(index);
+    }
+    // Prevent scroll-spy from hopping through intermediate sections
+    // while smooth-scroll is in progress.
+    scrollSyncLockUntilRef.current = Date.now() + Math.max(700, navigationDelayMs + 250);
     updateEffectPosition(liEl);
     if (filterRef.current) {
       const particles = filterRef.current.querySelectorAll('.particle');
@@ -115,8 +122,8 @@ const GooeyNav = ({
       makeParticles(filterRef.current);
     }
 
+    e.preventDefault();
     if (navigationDelayMs > 0) {
-      e.preventDefault();
       window.setTimeout(() => {
         navigateToHref(item?.href);
         if (onNavigate) onNavigate(item, index);
@@ -124,6 +131,7 @@ const GooeyNav = ({
       return;
     }
 
+    navigateToHref(item?.href);
     if (onNavigate) onNavigate(item, index);
   };
   const handleKeyDown = (e, index, item) => {
@@ -151,6 +159,48 @@ const GooeyNav = ({
     resizeObserver.observe(containerRef.current);
     return () => resizeObserver.disconnect();
   }, [activeIndex]);
+
+  useEffect(() => {
+    if (!syncWithScroll || !items?.length) return;
+
+    const sectionItems = items
+      .map((item, index) => ({ index, href: item?.href }))
+      .filter((item) => typeof item.href === 'string' && item.href.startsWith('#'));
+
+    if (!sectionItems.length) return;
+
+    const syncActiveFromScroll = () => {
+      if (Date.now() < scrollSyncLockUntilRef.current) return;
+      let nextIndex = sectionItems[0].index;
+      const activationLine = Math.max(scrollSpyOffset, window.innerHeight * 0.45);
+
+      sectionItems.forEach(({ index, href }) => {
+        const sectionEl = document.querySelector(href);
+        if (!sectionEl) return;
+        const top = sectionEl.getBoundingClientRect().top;
+        if (top <= activationLine) {
+          nextIndex = index;
+        }
+      });
+
+      const nearBottom =
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 24;
+      if (nearBottom) {
+        nextIndex = sectionItems[sectionItems.length - 1].index;
+      }
+
+      setActiveIndex((prev) => (prev === nextIndex ? prev : nextIndex));
+    };
+
+    syncActiveFromScroll();
+    window.addEventListener('scroll', syncActiveFromScroll, { passive: true });
+    window.addEventListener('hashchange', syncActiveFromScroll);
+
+    return () => {
+      window.removeEventListener('scroll', syncActiveFromScroll);
+      window.removeEventListener('hashchange', syncActiveFromScroll);
+    };
+  }, [items, scrollSpyOffset, syncWithScroll]);
 
   return (
     <>
@@ -302,7 +352,7 @@ const GooeyNav = ({
             {items.map((item, index) => (
               <li
                 key={index}
-                className={`cursor-target cursor-none rounded-full relative duration-300   ${
+                className={`cursor-none rounded-full relative duration-300   ${
                   activeIndex === index ? 'active ' : ''
                 }`}
               >
@@ -310,7 +360,7 @@ const GooeyNav = ({
                   onClick={e => handleClick(e, index, item)}
                   href={item.href}
                   onKeyDown={e => handleKeyDown(e, index, item)}
-                  className={` py-[0.6em] px-[1em] inline-block ${
+                  className={`cursor-target cursor-none py-[0.6em] px-[1em] inline-block ${
                     activeIndex === index ? 'font-bold' : ''
                   } ${vertical ? 'w-full text-center' : ''}`}
                 >
