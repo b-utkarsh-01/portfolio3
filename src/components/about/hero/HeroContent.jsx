@@ -7,11 +7,9 @@ import { contactIcons } from "../aboutData";
 
 const HeroContent = ({ profile, shortSummary }) => {
   return (
+    <>
     <div className="space-y-5 text-left">
-      <div className="flex w-full items-start justify-between gap-3">
-        <ProfileName name={profile.name} />
-        <HeroClock className="mt-1 lg:hidden" />
-      </div>
+      
       <TextType
         text={profile.title}
         typingSpeed={75}
@@ -61,6 +59,7 @@ const HeroContent = ({ profile, shortSummary }) => {
       </div>
 
     </div>
+    </>
   );
 };
 

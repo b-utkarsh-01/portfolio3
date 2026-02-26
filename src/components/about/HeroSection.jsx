@@ -5,6 +5,7 @@ import HeroBackground from "./hero/HeroBackground";
 import HeroContent from "./hero/HeroContent";
 import HeroBadge from "./hero/HeroBadge";
 import HeroClock from "./hero/HeroClock";
+import ProfileName from "./hero/ProfileName";
 
 const HeroSection = ({ appReady = true }) => {
   const heroRef = useRef(null);
@@ -39,11 +40,14 @@ const HeroSection = ({ appReady = true }) => {
       className="relative no-cursor-target w-full overflow-hidden rounded-3xl bg-[#040b1d] py-10 px-4 sm:px-6"
     >
       <HeroBackground />
-      <div className="relative max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-12 ">
+      <div className="flex w-[97%] mr-5 items-center justify-between gap-3 mb-8">
+        <ProfileName name={profile.name} />
+        <HeroClock className="mt-1 z-0 " />
+      </div>
+      <div className="relative max-w-6xl mx-auto flex flex-col items-start sm:flex-row justify-between items-center gap-12 ">
         <HeroContent key={`hero-content-${appReady ? "ready" : "loading"}`} profile={profile} shortSummary={shortSummary}/>
-
+        
         <div className="flex-shrink-0 flex flex-col items-center gap-3 lg:items-end">
-          <HeroClock className="hidden lg:block mr-5" />
           <HeroBadge key={`hero-badge-${appReady ? "ready" : "loading"}`} />
         </div>
       </div>
