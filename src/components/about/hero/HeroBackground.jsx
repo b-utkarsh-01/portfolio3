@@ -14,6 +14,7 @@ const HeroBackground = () => {
         bloomIntensity={0.6}
         chromaticAberration={0.002}
         noiseIntensity={0.01}
+        enableWebcam={true}
       />
     </div>
   );
